@@ -1,0 +1,677 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="AdressNr">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!AdressNr.Value, "DataSetTerminzettel")</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>AdressNr</rd:DefaultName>
+        <Top>9.70145mm</Top>
+        <Left>0mm</Left>
+        <Height>6mm</Height>
+        <Width>38.22912mm</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Adresse</Value>
+                <Style>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>18.1709mm</Top>
+        <Left>0mm</Left>
+        <Height>6mm</Height>
+        <Width>38.22912mm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Nachname">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Nachname.Value, "DataSetTerminzettel")</Value>
+                <Style>
+                  <FontSize>22pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Nachname</rd:DefaultName>
+        <Top>25.93479mm</Top>
+        <Left>39.2042mm</Left>
+        <Height>6mm</Height>
+        <Width>89.21471mm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Vorname">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Vorname.Value, "DataSetTerminzettel")</Value>
+                <Style>
+                  <FontSize>22pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Vorname</rd:DefaultName>
+        <Top>26.28757mm</Top>
+        <Left>0mm</Left>
+        <Height>6mm</Height>
+        <Width>37.44031mm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Strasse">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Strasse.Value, "DataSetTerminzettel")</Value>
+                <Style>
+                  <FontSize>22pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Strasse</rd:DefaultName>
+        <Top>33.69868mm</Top>
+        <Left>0mm</Left>
+        <Height>6mm</Height>
+        <Width>128.41891mm</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="PLZ">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!PLZ.Value, "DataSetTerminzettel")</Value>
+                <Style>
+                  <FontSize>22pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PLZ</rd:DefaultName>
+        <Top>41.46257mm</Top>
+        <Left>0mm</Left>
+        <Height>6mm</Height>
+        <Width>25.35273mm</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="ORT">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!ORT.Value, "DataSetTerminzettel")</Value>
+                <Style>
+                  <FontSize>22pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>ORT</rd:DefaultName>
+        <Top>41.46257mm</Top>
+        <Left>28.14028mm</Left>
+        <Height>6mm</Height>
+        <Width>100.27863mm</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox8">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Notizen: </Value>
+                <Style>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox8</rd:DefaultName>
+        <Top>64.56673mm</Top>
+        <Left>0mm</Left>
+        <Height>7.76111mm</Height>
+        <Width>33.99583mm</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Notiz.Value, "DataSetTerminzettel")</Value>
+                <Style>
+                  <FontSize>22pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>73.73895mm</Top>
+        <Left>0mm</Left>
+        <Height>12.39382mm</Height>
+        <Width>128.41891mm</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Adress Nummer:</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>3.92723mm</Top>
+        <Left>0mm</Left>
+        <Height>5.06867mm</Height>
+        <Width>66.45134mm</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line2">
+        <Top>0.68761in</Top>
+        <Height>0in</Height>
+        <Width>5.05586in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line3">
+        <Top>2.47255in</Top>
+        <Height>0in</Height>
+        <Width>5.05586in</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Telefonnummer">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Telefonnummer.Value, "DataSetTerminzettel")</Value>
+                <Style>
+                  <FontSize>28pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Telefonnummer</rd:DefaultName>
+        <Top>50.44722mm</Top>
+        <Left>0mm</Left>
+        <Height>10.94442mm</Height>
+        <Width>128.41884mm</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="User">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Anwender.Value, "DataSetTerminzettel")</Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <Top>0.15462in</Top>
+        <Left>2.64397in</Left>
+        <Height>0.19955in</Height>
+        <Width>1.94444in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>9.12978in</Height>
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+    </Style>
+  </Body>
+  <Width>5.09713in</Width>
+  <Page>
+    <PageHeader>
+      <Height>1.60639in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <ReportItems>
+        <Textbox Name="ReportTitle">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Terminzettel</Value>
+                  <Style>
+                    <FontFamily>Verdana</FontFamily>
+                    <FontSize>36pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <TextDecoration>Underline</TextDecoration>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
+          <rd:DefaultName>ReportTitle</rd:DefaultName>
+          <Top>3.70417mm</Top>
+          <Height>10.16mm</Height>
+          <Width>98.12865mm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Termin_von">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!Termin_von.Value, "DataSetTerminzettel")</Value>
+                  <Style>
+                    <FontSize>28pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <TextDecoration>Underline</TextDecoration>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Termin_von</rd:DefaultName>
+          <Top>19.81201mm</Top>
+          <Left>33.07916mm</Left>
+          <Height>16.75972mm</Height>
+          <Width>95.33974mm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BackgroundColor>Yellow</BackgroundColor>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Image Name="Logo">
+          <Source>Embedded</Source>
+          <Value>hhhlogo</Value>
+          <Sizing>FitProportional</Sizing>
+          <Top>3.70417mm</Top>
+          <Left>99.89254mm</Left>
+          <Height>10.16mm</Height>
+          <Width>29.57455mm</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+        <Textbox Name="Textbox10">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Wann:</Value>
+                  <Style>
+                    <FontSize>28pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox10</rd:DefaultName>
+          <Top>19.81201mm</Top>
+          <Left>0mm</Left>
+          <Height>16.75972mm</Height>
+          <Width>31.66805mm</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
+    <PageHeight>11.69in</PageHeight>
+    <PageWidth>8.27in</PageWidth>
+    <InteractiveHeight>11in</InteractiveHeight>
+    <InteractiveWidth>7.9in</InteractiveWidth>
+    <LeftMargin>2.5in</LeftMargin>
+    <TopMargin>0.41667in</TopMargin>
+    <BottomMargin>0.58333in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="mankegmbhDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>8bed20ae-4a9d-448f-aa4c-4bb23b76053f</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSetTerminzettel">
+      <Query>
+        <DataSourceName>mankegmbhDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="AdressNr">
+          <DataField>AdressNr</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Vorname">
+          <DataField>Vorname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Nachname">
+          <DataField>Nachname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Strasse">
+          <DataField>Strasse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PLZ">
+          <DataField>PLZ</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ORT">
+          <DataField>ORT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Termin_von">
+          <DataField>Termin_von</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Notiz">
+          <DataField>Notiz</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Telefonnummer">
+          <DataField>Telefonnummer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+		<Field Name="Anwender">
+          <DataField>Anwender</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>mankegmbhDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\Dennis\Documents\Visual Studio 2015\Projects\KnechtRuprecht\KnechtRuprecht\mankegmbhDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>SP_TerminzettelGet</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>SP_TerminzettelGetTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <EmbeddedImages>
+    <EmbeddedImage Name="hhhlogo">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>/9j/4AAQSkZJRgABAQEAYABgAAD/4RCeRXhpZgAATU0AKgAAAAgABAE7AAIAAAAPAAAISodpAAQAAAABAAAIWpydAAEAAAAcAAAQeuocAAcAAAgMAAAAPgAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFJlbsOpIE1laGxiZXJnAAAAAeocAAcAAAgMAAAIbAAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUgBlAG4A6QAgAE0AZQBoAGwAYgBlAHIAZwAAAP/hCmdodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0n77u/JyBpZD0nVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkJz8+DQo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIj48cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPjxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSJ1dWlkOmZh
+ZjViZGQ1LWJhM2QtMTFkYS1hZDMxLWQzM2Q3NTE4MmYxYiIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIi8+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iPjxkYzpjcmVhdG9yPjxyZGY6U2VxIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+PHJkZjpsaT5SZW7DqSBNZWhsYmVyZzwvcmRmOmxpPjwvcmRmOlNlcT4NCgkJCTwvZGM6Y3JlYXRvcj48L3JkZjpEZXNjcmlwdGlvbj48L3JkZjpSREY+PC94OnhtcG1ldGE+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw/eHBhY2tldCBlbmQ9J3cnPz7/2wBDAAcFBQYFBAcGBQYIBwcIChELCgkJChUPEAwRGBUaGRgVGBcbHichGx0lHRcYIi4iJSgpKywrGiAvMy8qMicqKyr/2wBDAQcICAoJChQLCxQqHBgcKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKir/wAARCAB2AUIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbH
+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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>50415356-49a4-4a5d-8955-0fc15653c7f5</rd:ReportID>
+</Report>
