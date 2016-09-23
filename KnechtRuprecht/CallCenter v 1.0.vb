@@ -2,6 +2,7 @@
 Imports MySql.Data.MySqlClient
 Imports Ozeki.VoIP
 Imports Ozeki.Media
+Imports System.Net
 
 Public Class CallCenter
     Dim con As New MySqlConnection
@@ -37,6 +38,10 @@ Public Class CallCenter
     Dim str_query As String
     Dim URL As String
     Dim PoolPlz As String
+    Dim SIPID As String
+    Dim SIPPassword As String
+    Dim Proxy As String
+    Dim Anzeigename As String
 
 
     Public Shared ReadOnly Property CurrentDomainUser() As String
@@ -252,23 +257,23 @@ Public Class CallCenter
                 Loop
 
                 cmd.CommandText = Nothing
-                    cmd.CommandText = "Select `AdressNr` from `adressen_pool` where `Index`= " & zahl
-                    con.Open()
-                    reader = cmd.ExecuteReader()
-                    reader.Read()
-                    adr = reader("AdressNr")
-                    reader.Close()
-                    con.Close()
+                cmd.CommandText = "Select `AdressNr` from `adressen_pool` where `Index`= " & zahl
+                con.Open()
+                reader = cmd.ExecuteReader()
+                reader.Read()
+                adr = reader("AdressNr")
+                reader.Close()
+                con.Close()
 
 
-                    cmd.CommandText = Nothing
-                    cmd.CommandText = "Select `LastCall` from `adressen` where `AdressNr`= " & adr
-                    con.Open()
-                    reader = cmd.ExecuteReader()
-                    reader.Read()
+                cmd.CommandText = Nothing
+                cmd.CommandText = "Select `LastCall` from `adressen` where `AdressNr`= " & adr
+                con.Open()
+                reader = cmd.ExecuteReader()
+                reader.Read()
                 diff = If(IsDBNull(reader("LastCall")), "02:00:00", reader("LastCall"))
                 reader.Close()
-                    con.Close()
+                con.Close()
 
                 If Now >= diff Then
                     diffJN = 1
@@ -284,11 +289,11 @@ Public Class CallCenter
                 '    con.Close()
 
                 If diffJN = 1 And vorhanden = 1 Then
-                        gibtes = 1
-                    End If
-                Loop
+                    gibtes = 1
+                End If
+            Loop
 
-                cmd.CommandText = Nothing
+            cmd.CommandText = Nothing
             cmd.CommandText = "Select `AdressNr` from `adressen_pool` where `Index`= " & zahl
             con.Open()
             reader = cmd.ExecuteReader()
@@ -936,6 +941,29 @@ Public Class CallCenter
     Private mediaSender As PhoneCallAudioSender = New PhoneCallAudioSender
     Private inComingCall As Boolean
 
+    Private Sub softPhone_IncommingCall(ByVal sender As Object, ByVal e As VoIPEventArgs(Of IPhoneCall))
+        InvokeGUIThread(Sub()
+                            labelCallStateInfo.Text = "Incoming call"
+                            labelDialingNumber.Text = String.Format("from {0}", e.Item.DialInfo)
+                            phoneCall = e.Item
+                            WireUpCallEvents()
+                            inComingCall = True
+                        End Sub)
+    End Sub
+
+    Private Sub phoneLine_PhoneLineInformation(ByVal sender As Object, ByVal e As RegistrationStateChangedArgs)
+        phoneLineInformation = e.State
+        InvokeGUIThread(Sub()
+                            labelIdentifier.Text = (TryCast(sender, IPhoneLine)).SIPAccount.DisplayName
+                            If (DirectCast(e.State, RegState) = RegState.RegistrationSucceeded) Then
+                                labelRegStatus.Text = "Online"
+                                labelCallStateInfo.Text = "Registration succeeded"
+                            Else
+                                labelCallStateInfo.Text = e.State.ToString
+                            End If
+                        End Sub)
+    End Sub
+
     Private Sub phoneCall_DtmfReceived(ByVal sender As Object, ByVal e As VoIPEventArgs(Of DtmfInfo))
         InvokeGUIThread(Sub()
                             Me.labelCallStateInfo.Text = String.Format("DTMF signal received: {0} ", e.Item.Signal.Signal)
@@ -1085,6 +1113,66 @@ Public Class CallCenter
         End If
     End Sub
 
+
+    Private Sub InitializeSoftPhone()
+        Try
+            Dim ip As IPAddress = SoftPhoneFactory.GetLocalIP()
+            softPhone = SoftPhoneFactory.CreateSoftPhone(ip, 5700, 5750)
+            AddHandler softPhone.IncomingCall, New EventHandler(Of VoIPEventArgs(Of IPhoneCall))(AddressOf softPhone_IncommingCall)
+            phoneLine = softPhone.CreatePhoneLine(New SIPAccount(True, "oz878", "oz878", "oz878", "oz878", "192.168.115.103", 5060))
+            AddHandler phoneLine.RegistrationStateChanged, New EventHandler(Of RegistrationStateChangedArgs)(AddressOf phoneLine_PhoneLineInformation)
+            softPhone.RegisterPhoneLine(phoneLine)
+        Catch ex As Exception
+            MessageBox.Show("You didn't give your local IP adress, so the program won't run properly.")
+        End Try
+    End Sub
+
+    Private Sub MicrophoneVolumeTrackbar_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MicrophoneVolumeTrackbar.Scroll
+        Dim volume As Single
+        volume = MicrophoneVolumeTrackbar.Value / 100
+        microphone.Volume = volume
+    End Sub
+
+    Private Sub SpeakerVolumeTrackbar_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SpeakerVolumeTrackbar.Scroll
+        Dim volume As Single
+        volume = SpeakerVolumeTrackbar.Value / 100
+        speaker.Volume = volume
+    End Sub
+
 #End Region
+
+
+    Private Sub getSipAccount()
+
+        con.ConnectionString = Nothing
+
+        If con.ConnectionString = Nothing Then
+                con.ConnectionString = verweis.cchhhConnectionString
+            End If
+
+            cmd.Connection = con
+
+        cmd.CommandText = "Select * from `sip_account` where `Anwendername`= " & CurrentDomainUser
+
+        Try
+            con.Open()
+            reader = cmd.ExecuteReader()
+            txtKunde.Clear()
+            Do While reader.Read()
+                SIPID = reader("SIP-ID")
+                SIPPassword = reader("SIP-Passwort")
+                Proxy = reader("Proxy")
+                Anzeigename = reader("Anzeigename")
+            Loop
+            reader.Close()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message & " GetSipAccount")
+        Finally
+                con.Close()
+            cmd.Connection = Nothing
+        End Try
+
+
+    End Sub
 End Class
 
