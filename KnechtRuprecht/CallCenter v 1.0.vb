@@ -417,7 +417,7 @@ Public Class CallCenter
             MsgBox("Termin " & dtpTerminVon.Value & " ist schon vergeben!" & vbCrLf & "Bitte den Termin ändern.")
 
         Else
-
+                        btnTerminZettel.Enabled = False
             str_query = Nothing
 
             str_query = "UPDATE `adressen`SET `TerminJN` = 1, `Termin_von` = @dtpTerminVon.Value ,`Termin_bis` = @dtpTerminBis.Value ,`Notiz` = @rtbNotizen.Text where AdressNr =  @int_AdressNr"
@@ -432,7 +432,7 @@ Public Class CallCenter
             terminkalender()
 
             Aktualisieren()
-            btnTerminZettel.Enabled = False
+
             deaktivieren()
 
         End If
