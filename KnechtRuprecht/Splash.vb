@@ -7,13 +7,14 @@ Public NotInheritable Class Splash
 
         Show()
 
-        If My.Computer.Network.Ping("192.168.1.42", 5000) = False Then
-            MsgBox("Datenbank nicht erreichbar")
-        Else
+        If My.Computer.Network.Ping("192.168.1.42", 5000) = True Then
             System.Threading.Thread.Sleep(2000)
 
             Dim cc As New KnechtRuprecht.CallCenter
             cc.Show()
+            Close()
+        Else
+            MsgBox("Datenbank nicht erreichbar")
             Close()
         End If
 

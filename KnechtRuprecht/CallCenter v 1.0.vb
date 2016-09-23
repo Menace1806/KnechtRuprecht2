@@ -963,8 +963,8 @@ Public Class CallCenter
             con.ConnectionString = verweis.cchhhConnectionString
         End If
 
-        cmd.CommandText = "Select `AnJN` from `globals` where `Funktion`= Google "
-
+        cmd.CommandText = "Select `AnJN` from `globals` where `Funktion`= " & Chr(34) & "Google" & Chr(34) & ";"
+        cmd.Connection = con
         Try
             con.Open()
             reader = cmd.ExecuteReader()
@@ -999,8 +999,8 @@ Public Class CallCenter
             con.ConnectionString = verweis.cchhhConnectionString
         End If
 
-        cmd.CommandText = "Select `AnJN` from `globals` where `Funktion`= Dialer "
-
+        cmd.CommandText = "Select `AnJN` from `globals` where `Funktion`= " & Chr(34) & "Dialer" & Chr(34) & ";"
+        cmd.Connection = con
         Try
             con.Open()
             reader = cmd.ExecuteReader()
