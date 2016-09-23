@@ -399,7 +399,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!Anwender.Value, "DataSetTerminzettel")</Value>
+                <Value>Wer:</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
                 </Style>
@@ -630,7 +630,7 @@
           <DataField>Telefonnummer</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-		<Field Name="Anwender">
+        <Field Name="Anwender">
           <DataField>Anwender</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>

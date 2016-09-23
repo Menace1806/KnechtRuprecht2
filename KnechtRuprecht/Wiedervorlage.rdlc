@@ -399,7 +399,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!Anwender.Value, "DataSetWiedervorlage")</Value>
+                <Value>Wer:</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
                 </Style>

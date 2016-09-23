@@ -1,8 +1,5 @@
 ﻿
 Imports MySql.Data.MySqlClient
-Imports Ozeki.VoIP
-Imports Ozeki.Media
-Imports System.Net
 
 Public Class CallCenter
     Dim con As New MySqlConnection
@@ -38,10 +35,9 @@ Public Class CallCenter
     Dim str_query As String
     Dim URL As String
     Dim PoolPlz As String
-    Dim SIPID As String
-    Dim SIPPassword As String
-    Dim Proxy As String
-    Dim Anzeigename As String
+    Dim Google As Boolean
+    Dim dialer As Boolean
+
 
 
     Public Shared ReadOnly Property CurrentDomainUser() As String
@@ -96,7 +92,12 @@ Public Class CallCenter
         '    btnAdmin.Visible = False
         'End If
 
-        cbGoogle.Checked = False
+        Google = 0
+        dialer = 0
+
+        GoogleJN()
+        DialerJN()
+
         Call nextKd()
         Call SetMyCustomFormat()
 
@@ -114,6 +115,15 @@ Public Class CallCenter
 
 
 
+    End Sub
+
+    Private Sub docall()
+        loCallTo.DoCall(str_TelNumber)
+
+        str_query = Nothing
+
+        str_query = "UPDATE `adressen`SET `LastCall` = @DateTime.Now , `Anwender` = @CurrentDomainUser  Where AdressNr = @int_AdressNr"
+        update_kd(str_query, 4)
     End Sub
 
     Private Sub NaechsterKunde_Click(sender As Object, e As EventArgs) Handles NaechsterKunde.Click
@@ -139,6 +149,17 @@ Public Class CallCenter
         End If
 
         Call nextKd()
+
+        If dialer = 1 Then
+            docall()
+            Anrufen.Visible = False
+            Anrufen.Enabled = False
+        Else
+            Anrufen.Enabled = True
+            Anrufen.Visible = True
+
+        End If
+
 
     End Sub
 
@@ -191,6 +212,7 @@ Public Class CallCenter
         update_kd(str_query, 1)
 
         keininteresse.Enabled = False
+
     End Sub
 
     Public Function zufall()
@@ -410,6 +432,7 @@ Public Class CallCenter
             terminkalender()
 
             Aktualisieren()
+            btnTerminZettel.Enabled = False
             deaktivieren()
 
         End If
@@ -548,6 +571,7 @@ Public Class CallCenter
         btnFlyer.Enabled = True
         Termin.Enabled = True
         btnWiedervorlage.Visible = True
+        btnTerminZettel.Enabled = True
     End Sub
 
     Private Sub deaktivieren()
@@ -664,6 +688,8 @@ Public Class CallCenter
                 cmd.Connection = Nothing
                 SetMyCustomFormat()
                 aktivieren()
+                Anrufen.Visible = True
+                Anrufen.Enabled = True
             End Try
 
             btnTerminZettel.Visible = False
@@ -910,6 +936,9 @@ Public Class CallCenter
     End Sub
 
     Private Sub btnWiedervorlage_Click(sender As Object, e As EventArgs) Handles btnWiedervorlage.Click
+        str_query = "UPDATE `adressen`SET `Notiz` = @rtbNotizen.Text where AdressNr =  @int_AdressNr"
+        update_kd(str_query, 1)
+
         str_query = "DELETE FROM `adressen_pool` where AdressNr = @int_AdressNr"
         update_kd(str_query, 1)
 
@@ -927,252 +956,78 @@ Public Class CallCenter
 
     End Sub
 
-
-#Region "Softphone"
-
-    Private phoneCall As IPhoneCall
-    Private phoneLine As IPhoneLine
-    Private phoneLineInformation As RegState
-    Private softPhone As ISoftPhone
-    Private microphone As Microphone = Microphone.GetDefaultDevice()
-    Private speaker As Speaker = Speaker.GetDefaultDevice()
-    Private connector As MediaConnector = New MediaConnector
-    Private mediaReceiver As PhoneCallAudioReceiver = New PhoneCallAudioReceiver
-    Private mediaSender As PhoneCallAudioSender = New PhoneCallAudioSender
-    Private inComingCall As Boolean
-
-    Private Sub softPhone_IncommingCall(ByVal sender As Object, ByVal e As VoIPEventArgs(Of IPhoneCall))
-        InvokeGUIThread(Sub()
-                            labelCallStateInfo.Text = "Incoming call"
-                            labelDialingNumber.Text = String.Format("from {0}", e.Item.DialInfo)
-                            phoneCall = e.Item
-                            WireUpCallEvents()
-                            inComingCall = True
-                        End Sub)
-    End Sub
-
-    Private Sub phoneLine_PhoneLineInformation(ByVal sender As Object, ByVal e As RegistrationStateChangedArgs)
-        phoneLineInformation = e.State
-        InvokeGUIThread(Sub()
-                            labelIdentifier.Text = (TryCast(sender, IPhoneLine)).SIPAccount.DisplayName
-                            If (DirectCast(e.State, RegState) = RegState.RegistrationSucceeded) Then
-                                labelRegStatus.Text = "Online"
-                                labelCallStateInfo.Text = "Registration succeeded"
-                            Else
-                                labelCallStateInfo.Text = e.State.ToString
-                            End If
-                        End Sub)
-    End Sub
-
-    Private Sub phoneCall_DtmfReceived(ByVal sender As Object, ByVal e As VoIPEventArgs(Of DtmfInfo))
-        InvokeGUIThread(Sub()
-                            Me.labelCallStateInfo.Text = String.Format("DTMF signal received: {0} ", e.Item.Signal.Signal)
-                        End Sub)
-    End Sub
-
-    Private Sub WireUpCallEvents()
-        AddHandler phoneCall.CallStateChanged, New EventHandler(Of CallStateChangedArgs)(AddressOf phoneCall_CallStateChanged)
-        AddHandler phoneCall.DtmfReceived, New EventHandler(Of VoIPEventArgs(Of DtmfInfo))(AddressOf phoneCall_DtmfReceived)
-    End Sub
-    Private Sub WireDownCallEvents()
-        If (Not phoneCall Is Nothing) Then
-            RemoveHandler phoneCall.CallStateChanged, New EventHandler(Of CallStateChangedArgs)(AddressOf phoneCall_CallStateChanged)
-            RemoveHandler phoneCall.DtmfReceived, New EventHandler(Of VoIPEventArgs(Of DtmfInfo))(AddressOf phoneCall_DtmfReceived)
-        End If
-    End Sub
-
-    Private Sub InvokeGUIThread(ByVal action As Action)
-        MyBase.Invoke(action)
-    End Sub
-
-    Private Sub phoneCall_CallStateChanged(ByVal sender As Object, ByVal e As CallStateChangedArgs)
-        InvokeGUIThread(Sub()
-                            labelCallStateInfo.Text = e.State.ToString
-                        End Sub)
-        Select Case e.State
-            Case CallState.Answered
-                microphone.Start()
-                connector.Connect(microphone, mediaSender)
-                speaker.Start()
-                connector.Connect(mediaReceiver, speaker)
-                mediaSender.AttachToCall(phoneCall)
-                mediaReceiver.AttachToCall(phoneCall)
-
-                Return
-            Case CallState.Completed
-                microphone.Stop()
-                connector.Disconnect(microphone, mediaSender)
-                speaker.Stop()
-                connector.Disconnect(mediaReceiver, speaker)
-                mediaSender.Detach()
-                mediaReceiver.Detach()
-                WireDownCallEvents()
-
-                phoneCall = Nothing
-                InvokeGUIThread(Sub()
-                                    labelDialingNumber.Text = String.Empty
-                                End Sub)
-                Return
-            Case CallState.Rejected
-                Exit Select
-            Case CallState.Cancelled
-                WireDownCallEvents()
-                phoneCall = Nothing
-                Exit Select
-            Case Else
-                Return
-        End Select
-    End Sub
-
-    ''' <summary>
-    ''' It starts a call with the dialed number or in case of an incoming call it accepts, picks up the call.
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub buttonPickUp_Click(ByVal sender As Object, ByVal e As EventArgs) Handles buttonPickUp.Click
-        If inComingCall Then
-            inComingCall = False
-            phoneCall.Answer()
-        ElseIf ((phoneCall Is Nothing) AndAlso Not String.IsNullOrEmpty(labelDialingNumber.Text)) Then
-            If (phoneLineInformation <> RegState.RegistrationSucceeded) Then
-                MessageBox.Show("Phone line state is not valid!")
-            Else
-                phoneCall = Me.softPhone.CreateCallObject(phoneLine, labelDialingNumber.Text)
-                WireUpCallEvents()
-                phoneCall.Start()
-            End If
-        End If
-    End Sub
-
-    ''' <summary>
-    ''' In case a call is in progress, it breaks the call.
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub buttonHangUp_Click(ByVal sender As Object, ByVal e As EventArgs) Handles buttonHangUp.Click
-        If (Not phoneCall Is Nothing) Then
-            If (phoneCall.CallState = CallState.Ringing AndAlso inComingCall) Then
-                phoneCall.Reject()
-            Else
-                phoneCall.HangUp()
-            End If
-            inComingCall = False
-            phoneCall = Nothing
-        End If
-        labelDialingNumber.Text = String.Empty
-    End Sub
-
-    ''' <summary>
-    ''' It makes the dialing number.
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub buttonKeyPadButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles button9.Click, button8.Click, button7.Click, button6.Click, button5.Click, button4.Click, button3.Click, button2.Click, button12.Click, button11.Click, button10.Click, Button13.Click
-        Dim btn As Button = TryCast(sender, Button)
-        If (Not btn Is Nothing) Then
-            If (btn.Text = "0/+") Then
-                labelDialingNumber.Text = (labelDialingNumber.Text & "0")
-            Else
-                labelDialingNumber.Text = (labelDialingNumber.Text & btn.Text.Trim)
-            End If
-        End If
-    End Sub
-
-    ''' <summary>
-    ''' It sends a DTMF signal according to the RFC 2833 standard.
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub buttonKeyPad_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs) Handles button9.MouseUp, button8.MouseUp, button7.MouseUp, button6.MouseUp, button5.MouseUp, button4.MouseUp, button3.MouseUp, button2.MouseUp, button12.MouseUp, button11.MouseUp, button10.MouseUp, Button1.MouseUp
-        If ((Not phoneCall Is Nothing) AndAlso (phoneCall.CallState = CallState.InCall)) Then
-            Dim id As Integer
-            Dim btn As Button = TryCast(sender, Button)
-            If (((Not btn Is Nothing) AndAlso (Not btn.Tag Is Nothing)) AndAlso Integer.TryParse(btn.Tag.ToString, id)) Then
-                phoneCall.StopDTMFSignal(Ozeki.Media.MediaType.Audio)
-            End If
-        End If
-    End Sub
-
-    ''' <summary>
-    ''' It stops sending the given DTMF signal. 
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub buttonKeyPad_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles button9.MouseDown, button8.MouseDown, button7.MouseDown, button6.MouseDown, button5.MouseDown, button4.MouseDown, button3.MouseDown, button2.MouseDown, button12.MouseDown, button11.MouseDown, button10.MouseDown, Button1.MouseDown
-        If ((Not phoneCall Is Nothing) AndAlso (phoneCall.CallState = CallState.InCall)) Then
-            Dim id As Integer
-            Dim btn As Button = TryCast(sender, Button)
-            If (((Not btn Is Nothing) AndAlso (Not btn.Tag Is Nothing)) AndAlso Integer.TryParse(btn.Tag.ToString, id)) Then
-                phoneCall.StartDTMFSignal(Ozeki.Media.MediaType.Audio, id)
-            End If
-        End If
-    End Sub
-
-
-    Private Sub InitializeSoftPhone()
-        Try
-            Dim ip As IPAddress = SoftPhoneFactory.GetLocalIP()
-            softPhone = SoftPhoneFactory.CreateSoftPhone(ip, 5700, 5750)
-            AddHandler softPhone.IncomingCall, New EventHandler(Of VoIPEventArgs(Of IPhoneCall))(AddressOf softPhone_IncommingCall)
-            phoneLine = softPhone.CreatePhoneLine(New SIPAccount(True, "oz878", "oz878", "oz878", "oz878", "192.168.115.103", 5060))
-            AddHandler phoneLine.RegistrationStateChanged, New EventHandler(Of RegistrationStateChangedArgs)(AddressOf phoneLine_PhoneLineInformation)
-            softPhone.RegisterPhoneLine(phoneLine)
-        Catch ex As Exception
-            MessageBox.Show("You didn't give your local IP adress, so the program won't run properly.")
-        End Try
-    End Sub
-
-    Private Sub MicrophoneVolumeTrackbar_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MicrophoneVolumeTrackbar.Scroll
-        Dim volume As Single
-        volume = MicrophoneVolumeTrackbar.Value / 100
-        microphone.Volume = volume
-    End Sub
-
-    Private Sub SpeakerVolumeTrackbar_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SpeakerVolumeTrackbar.Scroll
-        Dim volume As Single
-        volume = SpeakerVolumeTrackbar.Value / 100
-        speaker.Volume = volume
-    End Sub
-
-#End Region
-
-
-    Private Sub getSipAccount()
-
+    Private Sub GoogleJN()
         con.ConnectionString = Nothing
 
         If con.ConnectionString = Nothing Then
-                con.ConnectionString = verweis.cchhhConnectionString
-            End If
+            con.ConnectionString = verweis.cchhhConnectionString
+        End If
 
-            cmd.Connection = con
-
-        cmd.CommandText = "Select * from `sip_account` where `Anwendername`= " & CurrentDomainUser
+        cmd.CommandText = "Select `AnJN` from `globals` where `Funktion`= Google "
 
         Try
             con.Open()
             reader = cmd.ExecuteReader()
-            txtKunde.Clear()
+
             Do While reader.Read()
-                SIPID = reader("SIP-ID")
-                SIPPassword = reader("SIP-Passwort")
-                Proxy = reader("Proxy")
-                Anzeigename = reader("Anzeigename")
+                Google = reader("AnJN")
             Loop
             reader.Close()
+            con.Close()
         Catch ex As Exception
-            MessageBox.Show(ex.Message & " GetSipAccount")
+            'MessageBox.Show(ex.Message & " nxtkd")
         Finally
-                con.Close()
+            con.Close()
             cmd.Connection = Nothing
+
         End Try
+
+        If Google = 0 Then
+            cbGoogle.Visible = False
+            cbGoogle.Checked = False
+        Else
+            cbGoogle.Visible = True
+
+        End If
+
+    End Sub
+
+    Private Sub DialerJN()
+        con.ConnectionString = Nothing
+
+        If con.ConnectionString = Nothing Then
+            con.ConnectionString = verweis.cchhhConnectionString
+        End If
+
+        cmd.CommandText = "Select `AnJN` from `globals` where `Funktion`= Dialer "
+
+        Try
+            con.Open()
+            reader = cmd.ExecuteReader()
+
+            Do While reader.Read()
+                dialer = reader("AnJN")
+            Loop
+            reader.Close()
+            con.Close()
+        Catch ex As Exception
+            'MessageBox.Show(ex.Message & " nxtkd")
+        Finally
+            con.Close()
+            cmd.Connection = Nothing
+
+        End Try
+
+        If dialer = 1 Then
+            Anrufen.Visible = False
+            Anrufen.Enabled = False
+        Else
+            Anrufen.Visible = True
+            Anrufen.Enabled = True
+        End If
 
 
     End Sub
+
 End Class
 

@@ -53,37 +53,9 @@ Partial Class CallCenter
         Me.lblLastCall = New System.Windows.Forms.Label()
         Me.lblLetzterAnruf = New System.Windows.Forms.Label()
         Me.btnWiedervorlage = New System.Windows.Forms.Button()
-        Me.panel2 = New System.Windows.Forms.Panel()
-        Me.SpeakerVolumeTrackbar = New System.Windows.Forms.TrackBar()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.MicrophoneVolumeTrackbar = New System.Windows.Forms.TrackBar()
-        Me.panel1 = New System.Windows.Forms.Panel()
-        Me.labelIdentifier = New System.Windows.Forms.Label()
-        Me.labelRegStatus = New System.Windows.Forms.Label()
-        Me.labelDialingNumber = New System.Windows.Forms.Label()
-        Me.labelCallStateInfo = New System.Windows.Forms.Label()
-        Me.buttonHangUp = New System.Windows.Forms.Button()
-        Me.buttonPickUp = New System.Windows.Forms.Button()
-        Me.button10 = New System.Windows.Forms.Button()
-        Me.button11 = New System.Windows.Forms.Button()
-        Me.button12 = New System.Windows.Forms.Button()
-        Me.button7 = New System.Windows.Forms.Button()
-        Me.button8 = New System.Windows.Forms.Button()
-        Me.button9 = New System.Windows.Forms.Button()
-        Me.button4 = New System.Windows.Forms.Button()
-        Me.button5 = New System.Windows.Forms.Button()
-        Me.button6 = New System.Windows.Forms.Button()
-        Me.button3 = New System.Windows.Forms.Button()
-        Me.button2 = New System.Windows.Forms.Button()
-        Me.Button13 = New System.Windows.Forms.Button()
         CType(Me.adressen_basisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SP_TerminzettelGetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mankegmbhDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.panel2.SuspendLayout()
-        CType(Me.SpeakerVolumeTrackbar, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MicrophoneVolumeTrackbar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Anrufen
@@ -248,181 +220,9 @@ Partial Class CallCenter
         Me.btnWiedervorlage.Name = "btnWiedervorlage"
         Me.btnWiedervorlage.UseVisualStyleBackColor = True
         '
-        'panel2
-        '
-        Me.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panel2.Controls.Add(Me.Button13)
-        Me.panel2.Controls.Add(Me.SpeakerVolumeTrackbar)
-        Me.panel2.Controls.Add(Me.Label2)
-        Me.panel2.Controls.Add(Me.Label3)
-        Me.panel2.Controls.Add(Me.MicrophoneVolumeTrackbar)
-        Me.panel2.Controls.Add(Me.panel1)
-        Me.panel2.Controls.Add(Me.buttonHangUp)
-        Me.panel2.Controls.Add(Me.buttonPickUp)
-        Me.panel2.Controls.Add(Me.button10)
-        Me.panel2.Controls.Add(Me.button11)
-        Me.panel2.Controls.Add(Me.button12)
-        Me.panel2.Controls.Add(Me.button7)
-        Me.panel2.Controls.Add(Me.button8)
-        Me.panel2.Controls.Add(Me.button9)
-        Me.panel2.Controls.Add(Me.button4)
-        Me.panel2.Controls.Add(Me.button5)
-        Me.panel2.Controls.Add(Me.button6)
-        Me.panel2.Controls.Add(Me.button3)
-        Me.panel2.Controls.Add(Me.button2)
-        resources.ApplyResources(Me.panel2, "panel2")
-        Me.panel2.Name = "panel2"
-        '
-        'SpeakerVolumeTrackbar
-        '
-        resources.ApplyResources(Me.SpeakerVolumeTrackbar, "SpeakerVolumeTrackbar")
-        Me.SpeakerVolumeTrackbar.Name = "SpeakerVolumeTrackbar"
-        '
-        'Label2
-        '
-        resources.ApplyResources(Me.Label2, "Label2")
-        Me.Label2.Name = "Label2"
-        '
-        'Label3
-        '
-        resources.ApplyResources(Me.Label3, "Label3")
-        Me.Label3.Name = "Label3"
-        '
-        'MicrophoneVolumeTrackbar
-        '
-        resources.ApplyResources(Me.MicrophoneVolumeTrackbar, "MicrophoneVolumeTrackbar")
-        Me.MicrophoneVolumeTrackbar.Name = "MicrophoneVolumeTrackbar"
-        '
-        'panel1
-        '
-        Me.panel1.BackColor = System.Drawing.Color.White
-        Me.panel1.Controls.Add(Me.labelIdentifier)
-        Me.panel1.Controls.Add(Me.labelRegStatus)
-        Me.panel1.Controls.Add(Me.labelDialingNumber)
-        Me.panel1.Controls.Add(Me.labelCallStateInfo)
-        resources.ApplyResources(Me.panel1, "panel1")
-        Me.panel1.Name = "panel1"
-        '
-        'labelIdentifier
-        '
-        resources.ApplyResources(Me.labelIdentifier, "labelIdentifier")
-        Me.labelIdentifier.Name = "labelIdentifier"
-        '
-        'labelRegStatus
-        '
-        resources.ApplyResources(Me.labelRegStatus, "labelRegStatus")
-        Me.labelRegStatus.Name = "labelRegStatus"
-        '
-        'labelDialingNumber
-        '
-        resources.ApplyResources(Me.labelDialingNumber, "labelDialingNumber")
-        Me.labelDialingNumber.Name = "labelDialingNumber"
-        '
-        'labelCallStateInfo
-        '
-        resources.ApplyResources(Me.labelCallStateInfo, "labelCallStateInfo")
-        Me.labelCallStateInfo.Name = "labelCallStateInfo"
-        '
-        'buttonHangUp
-        '
-        resources.ApplyResources(Me.buttonHangUp, "buttonHangUp")
-        Me.buttonHangUp.Name = "buttonHangUp"
-        Me.buttonHangUp.UseVisualStyleBackColor = True
-        '
-        'buttonPickUp
-        '
-        resources.ApplyResources(Me.buttonPickUp, "buttonPickUp")
-        Me.buttonPickUp.Name = "buttonPickUp"
-        Me.buttonPickUp.UseVisualStyleBackColor = True
-        '
-        'button10
-        '
-        resources.ApplyResources(Me.button10, "button10")
-        Me.button10.Name = "button10"
-        Me.button10.Tag = "10"
-        Me.button10.UseVisualStyleBackColor = True
-        '
-        'button11
-        '
-        resources.ApplyResources(Me.button11, "button11")
-        Me.button11.Name = "button11"
-        Me.button11.Tag = "0"
-        Me.button11.UseVisualStyleBackColor = True
-        '
-        'button12
-        '
-        resources.ApplyResources(Me.button12, "button12")
-        Me.button12.Name = "button12"
-        Me.button12.Tag = "11"
-        Me.button12.UseVisualStyleBackColor = True
-        '
-        'button7
-        '
-        resources.ApplyResources(Me.button7, "button7")
-        Me.button7.Name = "button7"
-        Me.button7.Tag = "7"
-        Me.button7.UseVisualStyleBackColor = True
-        '
-        'button8
-        '
-        resources.ApplyResources(Me.button8, "button8")
-        Me.button8.Name = "button8"
-        Me.button8.Tag = "8"
-        Me.button8.UseVisualStyleBackColor = True
-        '
-        'button9
-        '
-        resources.ApplyResources(Me.button9, "button9")
-        Me.button9.Name = "button9"
-        Me.button9.Tag = "9"
-        Me.button9.UseVisualStyleBackColor = True
-        '
-        'button4
-        '
-        resources.ApplyResources(Me.button4, "button4")
-        Me.button4.Name = "button4"
-        Me.button4.Tag = "4"
-        Me.button4.UseVisualStyleBackColor = True
-        '
-        'button5
-        '
-        resources.ApplyResources(Me.button5, "button5")
-        Me.button5.Name = "button5"
-        Me.button5.Tag = "5"
-        Me.button5.UseVisualStyleBackColor = True
-        '
-        'button6
-        '
-        resources.ApplyResources(Me.button6, "button6")
-        Me.button6.Name = "button6"
-        Me.button6.Tag = "6"
-        Me.button6.UseVisualStyleBackColor = True
-        '
-        'button3
-        '
-        resources.ApplyResources(Me.button3, "button3")
-        Me.button3.Name = "button3"
-        Me.button3.Tag = "3"
-        Me.button3.UseVisualStyleBackColor = True
-        '
-        'button2
-        '
-        resources.ApplyResources(Me.button2, "button2")
-        Me.button2.Name = "button2"
-        Me.button2.Tag = "2"
-        Me.button2.UseVisualStyleBackColor = True
-        '
-        'Button13
-        '
-        resources.ApplyResources(Me.Button13, "Button13")
-        Me.Button13.Name = "Button13"
-        Me.Button13.Tag = "2"
-        Me.Button13.UseVisualStyleBackColor = True
-        '
         'CallCenter
         '
         resources.ApplyResources(Me, "$this")
-        Me.Controls.Add(Me.panel2)
         Me.Controls.Add(Me.btnWiedervorlage)
         Me.Controls.Add(Me.lblLetzterAnruf)
         Me.Controls.Add(Me.lblLastCall)
@@ -451,12 +251,6 @@ Partial Class CallCenter
         CType(Me.adressen_basisBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SP_TerminzettelGetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.mankegmbhDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.panel2.ResumeLayout(False)
-        Me.panel2.PerformLayout()
-        CType(Me.SpeakerVolumeTrackbar, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MicrophoneVolumeTrackbar, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.panel1.ResumeLayout(False)
-        Me.panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -509,28 +303,4 @@ Partial Class CallCenter
     Friend WithEvents lblLastCall As Label
     Friend WithEvents lblLetzterAnruf As Label
     Friend WithEvents btnWiedervorlage As Button
-    Private WithEvents panel2 As Panel
-    Friend WithEvents SpeakerVolumeTrackbar As TrackBar
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents MicrophoneVolumeTrackbar As TrackBar
-    Private WithEvents panel1 As Panel
-    Private WithEvents labelIdentifier As Label
-    Private WithEvents labelRegStatus As Label
-    Private WithEvents labelDialingNumber As Label
-    Private WithEvents labelCallStateInfo As Label
-    Private WithEvents buttonHangUp As Button
-    Private WithEvents buttonPickUp As Button
-    Private WithEvents button10 As Button
-    Private WithEvents button11 As Button
-    Private WithEvents button12 As Button
-    Private WithEvents button7 As Button
-    Private WithEvents button8 As Button
-    Private WithEvents button9 As Button
-    Private WithEvents button4 As Button
-    Private WithEvents button5 As Button
-    Private WithEvents button6 As Button
-    Private WithEvents button3 As Button
-    Private WithEvents button2 As Button
-    Private WithEvents Button13 As Button
 End Class
