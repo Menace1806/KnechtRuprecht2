@@ -53,16 +53,9 @@ Partial Class CallCenter
         Me.lblLastCall = New System.Windows.Forms.Label()
         Me.lblLetzterAnruf = New System.Windows.Forms.Label()
         Me.btnWiedervorlage = New System.Windows.Forms.Button()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
         CType(Me.adressen_basisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SP_TerminzettelGetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mankegmbhDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Anrufen
@@ -214,11 +207,13 @@ Partial Class CallCenter
         'lblLastCall
         '
         resources.ApplyResources(Me.lblLastCall, "lblLastCall")
+        Me.lblLastCall.ForeColor = System.Drawing.Color.Black
         Me.lblLastCall.Name = "lblLastCall"
         '
         'lblLetzterAnruf
         '
         resources.ApplyResources(Me.lblLetzterAnruf, "lblLetzterAnruf")
+        Me.lblLetzterAnruf.ForeColor = System.Drawing.Color.Red
         Me.lblLetzterAnruf.Name = "lblLetzterAnruf"
         '
         'btnWiedervorlage
@@ -227,42 +222,9 @@ Partial Class CallCenter
         Me.btnWiedervorlage.Name = "btnWiedervorlage"
         Me.btnWiedervorlage.UseVisualStyleBackColor = True
         '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4, Me.ToolStripStatusLabel5})
-        resources.ApplyResources(Me.StatusStrip1, "StatusStrip1")
-        Me.StatusStrip1.Name = "StatusStrip1"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        resources.ApplyResources(Me.ToolStripStatusLabel1, "ToolStripStatusLabel1")
-        '
-        'ToolStripStatusLabel2
-        '
-        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        resources.ApplyResources(Me.ToolStripStatusLabel2, "ToolStripStatusLabel2")
-        '
-        'ToolStripStatusLabel3
-        '
-        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        resources.ApplyResources(Me.ToolStripStatusLabel3, "ToolStripStatusLabel3")
-        '
-        'ToolStripStatusLabel4
-        '
-        Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        resources.ApplyResources(Me.ToolStripStatusLabel4, "ToolStripStatusLabel4")
-        '
-        'ToolStripStatusLabel5
-        '
-        Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
-        resources.ApplyResources(Me.ToolStripStatusLabel5, "ToolStripStatusLabel5")
-        '
         'CallCenter
         '
         resources.ApplyResources(Me, "$this")
-        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.btnWiedervorlage)
         Me.Controls.Add(Me.lblLetzterAnruf)
         Me.Controls.Add(Me.lblLastCall)
@@ -291,8 +253,6 @@ Partial Class CallCenter
         CType(Me.adressen_basisBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SP_TerminzettelGetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.mankegmbhDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.StatusStrip1.ResumeLayout(False)
-        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -345,10 +305,4 @@ Partial Class CallCenter
     Friend WithEvents lblLastCall As Label
     Friend WithEvents lblLetzterAnruf As Label
     Friend WithEvents btnWiedervorlage As Button
-    Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
 End Class

@@ -5,8 +5,10 @@ Public Class ReportViewer
 
 
     Private Sub ReportViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        SP_TerminzettelGetTableAdapter.Fill(mankegmbhDataSet.SP_TerminzettelGet, int_AdressNr)
+        Try
+            SP_TerminzettelGetTableAdapter.Fill(mankegmbhDataSet.SP_TerminzettelGet, int_AdressNr)
+        Catch ex As Exception
+        End Try
 
         With prtReportViewer
             .RefreshReport()

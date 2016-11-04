@@ -62,7 +62,7 @@ Public Class CallCenter
         Dim verweis As New My.MySettings
 
         Anrufen.Enabled = loCallTo.Enabled
-        Text = verweis.ApplicationName & " || User: " & CurrentDomainUser
+        Text = verweis.ApplicationName
         con.ConnectionString = verweis.cchhhConnectionString
         If con.ConnectionString = Nothing Then
             con.ConnectionString = verweis.cchhhConnectionString
@@ -92,11 +92,9 @@ Public Class CallCenter
         '    btnAdmin.Visible = False
         'End If
 
-        Google = 0
-        dialer = 0
 
         GoogleJN()
-        DialerJN()
+        'DialerJN()
 
         Call nextKd()
         Call SetMyCustomFormat()
@@ -987,7 +985,7 @@ Public Class CallCenter
             cbGoogle.Checked = False
         Else
             cbGoogle.Visible = True
-
+            cbGoogle.Checked = True
         End If
 
     End Sub
@@ -1028,6 +1026,7 @@ Public Class CallCenter
 
 
     End Sub
+
 
 End Class
 
