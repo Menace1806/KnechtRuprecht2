@@ -25,53 +25,41 @@ Partial Class ReportViewer
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReportViewer))
-        Me.SPTerminzettelGetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MankegmbhDataSet1 = New KnechtRuprecht.mankegmbhDataSet()
+        Me.MankegmbhDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MankegmbhDataSet = New KnechtRuprecht.mankegmbhDataSet()
         Me.prtReportViewer = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.SP_TerminzettelGetTableAdapter1 = New KnechtRuprecht.mankegmbhDataSetTableAdapters.SP_TerminzettelGetTableAdapter()
-        Me.mankegmbhDataSet = New KnechtRuprecht.mankegmbhDataSet()
         Me.SP_TerminzettelGetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SP_TerminzettelGetTableAdapter = New KnechtRuprecht.mankegmbhDataSetTableAdapters.SP_TerminzettelGetTableAdapter()
-        CType(Me.SPTerminzettelGetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MankegmbhDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.mankegmbhDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MankegmbhDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MankegmbhDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SP_TerminzettelGetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'SPTerminzettelGetBindingSource
+        'MankegmbhDataSetBindingSource
         '
-        Me.SPTerminzettelGetBindingSource.DataMember = "SP_TerminzettelGet"
-        Me.SPTerminzettelGetBindingSource.DataSource = Me.MankegmbhDataSet1
+        Me.MankegmbhDataSetBindingSource.DataSource = Me.MankegmbhDataSet
+        Me.MankegmbhDataSetBindingSource.Position = 0
         '
-        'MankegmbhDataSet1
+        'MankegmbhDataSet
         '
-        Me.MankegmbhDataSet1.DataSetName = "mankegmbhDataSet"
-        Me.MankegmbhDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.MankegmbhDataSet.DataSetName = "mankegmbhDataSet"
+        Me.MankegmbhDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'prtReportViewer
         '
         ReportDataSource1.Name = "DataSetTerminzettel"
         ReportDataSource1.Value = Me.SP_TerminzettelGetBindingSource
         Me.prtReportViewer.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.prtReportViewer.LocalReport.ReportEmbeddedResource = "KnechtRuprecht.Terminzettel.rdlc"
+        Me.prtReportViewer.LocalReport.ReportEmbeddedResource = "KnechtRuprecht.Report1.rdlc"
         Me.prtReportViewer.Location = New System.Drawing.Point(2, -3)
         Me.prtReportViewer.Name = "prtReportViewer"
         Me.prtReportViewer.Size = New System.Drawing.Size(1008, 548)
         Me.prtReportViewer.TabIndex = 21
         '
-        'SP_TerminzettelGetTableAdapter1
-        '
-        Me.SP_TerminzettelGetTableAdapter1.ClearBeforeFill = True
-        '
-        'mankegmbhDataSet
-        '
-        Me.mankegmbhDataSet.DataSetName = "mankegmbhDataSet"
-        Me.mankegmbhDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'SP_TerminzettelGetBindingSource
         '
         Me.SP_TerminzettelGetBindingSource.DataMember = "SP_TerminzettelGet"
-        Me.SP_TerminzettelGetBindingSource.DataSource = Me.mankegmbhDataSet
+        Me.SP_TerminzettelGetBindingSource.DataSource = Me.MankegmbhDataSet
         '
         'SP_TerminzettelGetTableAdapter
         '
@@ -89,19 +77,16 @@ Partial Class ReportViewer
         Me.Name = "ReportViewer"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ReportViewer"
-        CType(Me.SPTerminzettelGetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MankegmbhDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.mankegmbhDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MankegmbhDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MankegmbhDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SP_TerminzettelGetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents prtReportViewer As Microsoft.Reporting.WinForms.ReportViewer
-    Friend WithEvents SPTerminzettelGetBindingSource As BindingSource
-    Friend WithEvents MankegmbhDataSet1 As mankegmbhDataSet
-    Friend WithEvents SP_TerminzettelGetTableAdapter1 As mankegmbhDataSetTableAdapters.SP_TerminzettelGetTableAdapter
+    Friend WithEvents MankegmbhDataSetBindingSource As BindingSource
+    Friend WithEvents MankegmbhDataSet As mankegmbhDataSet
     Friend WithEvents SP_TerminzettelGetBindingSource As BindingSource
-    Friend WithEvents mankegmbhDataSet As mankegmbhDataSet
     Friend WithEvents SP_TerminzettelGetTableAdapter As mankegmbhDataSetTableAdapters.SP_TerminzettelGetTableAdapter
 End Class

@@ -219,6 +219,7 @@
     <EmbeddedResource Include="NeuerKunde.resx">
       <DependentUpon>NeuerKunde.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="ReportViewer.resx">
       <DependentUpon>ReportViewer.vb</DependentUpon>
     </EmbeddedResource>
@@ -256,7 +257,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="Terminzettel.rdlc" />
+    <EmbeddedResource Include="Terminzettel.rdlC" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">

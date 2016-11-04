@@ -1,4 +1,7 @@
 ﻿
+
+
+
 Public Class ReportViewer
 
     Dim int_AdressNr As Integer
@@ -6,7 +9,7 @@ Public Class ReportViewer
 
     Private Sub ReportViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            SP_TerminzettelGetTableAdapter.Fill(mankegmbhDataSet.SP_TerminzettelGet, int_AdressNr)
+            SP_TerminzettelGetTableAdapter.Fill(MankegmbhDataSet.SP_TerminzettelGet, int_AdressNr)
         Catch ex As Exception
         End Try
 
@@ -22,7 +25,6 @@ Public Class ReportViewer
         Return 0
 
     End Function
-
 
 
 End Class
