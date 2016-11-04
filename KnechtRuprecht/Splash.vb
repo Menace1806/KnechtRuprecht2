@@ -7,22 +7,22 @@ Public NotInheritable Class Splash
 
         Show()
 
-        If My.Computer.Network.Ping("192.168.1.42", 5000) = True Then
-            System.Threading.Thread.Sleep(2000)
+        'If My.Computer.Network.Ping("192.168.1.42", 5000) = True Then
+        '    System.Threading.Thread.Sleep(2000)
 
-            Dim cc As New KnechtRuprecht.CallCenter
+        Dim cc As New KnechtRuprecht.CallCenter
             cc.Show()
             Close()
-        ElseIf My.Computer.Network.Ping("192.168.1.42", 5000) = True Then
-            System.Threading.Thread.Sleep(2000)
+        'ElseIf My.Computer.Network.Ping("192.168.1.42", 5000) = True Then
+        '    System.Threading.Thread.Sleep(2000)
 
-            Dim cc As New KnechtRuprecht.CallCenter
-            cc.Show()
-            Close()
-        Else
-            MsgBox("Datenbank nicht erreichbar")
-            Close()
-        End If
+        '    Dim cc As New KnechtRuprecht.CallCenter
+        '    cc.Show()
+        '    Close()
+        'Else
+        '    MsgBox("Datenbank nicht erreichbar")
+        '    Close()
+        'End If
 
 
 
